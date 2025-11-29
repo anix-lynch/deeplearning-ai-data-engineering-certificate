@@ -9,4 +9,4 @@ classicmodels_modeling:
       dbname: postgres
       schema: classicmodels
       user: postgresuser
-      password: adminpwrd    
+      password: <YOUR_PASSWORD>    

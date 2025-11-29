@@ -1,7 +1,7 @@
-# Handover Summary: Coursera C4 W1 Assignment (dbt)
+# C4 W1 Assignment Notes: Data Modeling with dbt
 
 ## 📅 Date: 2025-11-29
-## 🎯 Objective
+## 🎯 Assignment
 Complete the "Data Modeling with dbt" assignment for Course 4 Week 1 of the DeepLearning.AI Data Engineering Certificate.
 
 ## ✅ Status
@@ -32,7 +32,7 @@ The grader checks for row counts (e.g., `classicmodels_star_schema.fact_orders r
    - `orders_obt`: 2996
    These counts look reasonable for the `classicmodels` dataset.
 
-## 🛠️ Potential Fixes for Next Agent
+## 🛠️ Troubleshooting Notes
 1. **Check Grader Expectations:** Does the grader expect **views** instead of tables?
 2. **Schema Name:** Verify if the grader expects the default `public` schema or `classicmodels` schema instead of custom schemas. (Though the error message `classicmodels_star_schema.fact_orders` implies it *does* look in that schema).
 3. **Permissions:** Ensure the grader user has `USAGE` on the new schemas.
