@@ -1,5 +1,19 @@
 version: 2
 
+sources:
+  - name: classicmodels
+    database: postgres
+    schema: classicmodels
+    tables:
+      - name: customers
+      - name: employees
+      - name: offices
+      - name: orderdetails
+      - name: orders
+      - name: payments
+      - name: productlines
+      - name: products
+
 models:
   - name: fact_orders
     description: "Fact Orders"
