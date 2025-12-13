@@ -55,11 +55,11 @@ def main():
     ### START CODE HERE ### (~ 9 lines of code)
     for album_id in albums_ids:
         album_data = get_paginated_album_tracks(
-            base_url=None,
-            access_token=token.None("None"),
-            album_id=None,
-            get_token=None,
-            **None,
+            base_url=URL_ALBUM_TRACKS,
+            access_token=token.get("access_token"),
+            album_id=album_id,
+            get_token=get_token,
+            **kwargs,
         )
     ### END CODE HERE ###
 
