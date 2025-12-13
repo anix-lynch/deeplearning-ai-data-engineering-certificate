@@ -23,12 +23,13 @@ This repository contains all assignments and projects completed for the **DeepLe
 
 ### Module 2: Source Systems, Data Ingestion, and Pipelines 🚧
 **Course**: Data Engineering Professional Certificate (Course 2)  
-**Status**: In Progress  
+**Status**: In Progress (25%)  
 **Started**: November 2025
 
 - 🚧 **Week 1**: Troubleshooting Database Connectivity on AWS
+- ✅ **Week 4**: Building an Advanced Data Pipeline With Data Quality Checks *(Completed Dec 2025)*
 
-**Key Technologies**: EC2, RDS (MySQL & PostgreSQL), Security Groups, VPC, AWS Systems Manager
+**Key Technologies**: Apache Airflow, Great Expectations, EC2, RDS, S3, Security Groups, VPC, Pandas, Jinja2
 
 [📂 View Module 2 Details](./module2/)
 
@@ -98,19 +99,29 @@ deeplearning-ai-data-engineering-certificate/
 | Module | Course Name | Weeks Completed | Status |
 |--------|-------------|-----------------|--------|
 | Module 1 | Data Engineering Foundations | 3/3 | ✅ 100% |
-| Module 2 | Source Systems & Data Ingestion | 1/4 | 🚧 25% |
+| Module 2 | Source Systems & Data Ingestion | 1/4 (Week 4 done) | 🚧 25% |
 | Module 3 | Data Transformation | 0/4 | ⏳ Pending |
 | Module 4 | Data Serving | 0/4 | ⏳ Pending |
+
+**Note**: Completed Week 4 assignments (Advanced Airflow ML Pipeline) ahead of sequence.
 
 ---
 
 ## 🏆 Achievements
 
+### Module 1 (Data Engineering Foundations)
 - ✅ Built production-grade ETL pipelines
 - ✅ Implemented real-time streaming architectures
 - ✅ Deployed ML inference pipelines with vector databases
 - ✅ Managed cloud infrastructure with Terraform
 - ✅ Optimized data architectures for performance and security
+
+### Module 2 (Source Systems & Data Ingestion)
+- ✅ Built advanced Airflow ML pipeline with data quality checks
+- ✅ Implemented Great Expectations for data validation
+- ✅ Created conditional deployment logic with BranchPythonOperator
+- ✅ Developed dynamic DAG generation using Jinja2 templates
+- ✅ Deployed multi-vendor ML pipelines to AWS EC2
 
 ---
 
