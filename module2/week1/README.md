@@ -1,204 +1,231 @@
 # Week 1: Troubleshooting Database Connectivity on AWS
 
-**Module**: 2 - Source Systems, Data Ingestion, and Pipelines  
-**Status**: 🚧 In Progress
+**Status**: 🚧 **In Progress**  
+**Assignment Type**: AWS Networking & Database Troubleshooting  
+**Estimated Time**: 2-3 hours
 
 ---
 
 ## 📋 Assignment Overview
 
-This lab focuses on troubleshooting and resolving common issues when connecting to databases on AWS. You'll work with:
-- EC2 instances connecting to RDS databases
-- Security group configurations
-- Network connectivity issues
-- Database access and data insertion
+**Objective**: Troubleshoot and resolve common issues when connecting to AWS RDS databases from EC2 instances.
+
+This is a hands-on AWS troubleshooting lab focusing on:
+- VPC and networking configuration
+- Security group rules
+- Database connectivity
+- IAM permissions
+- SQL operations
+
+**Note**: This is NOT a coding assignment - it's about AWS configuration and troubleshooting!
 
 ---
 
 ## 🎯 Learning Objectives
 
-1. Diagnose and fix database connectivity issues from EC2 to RDS
-2. Configure security groups for proper network access
-3. Enhance RDS security configurations
-4. Connect to MySQL and PostgreSQL databases
-5. Insert and query data in relational databases
+By completing this assignment, you will learn:
+
+1. **AWS Networking**
+   - VPC (Virtual Private Cloud) configuration
+   - Subnet configuration
+   - Security group management
+   - Network troubleshooting
+
+2. **Database Connectivity**
+   - RDS instance configuration
+   - PostgreSQL connection setup
+   - psql client usage
+   - Connection troubleshooting
+
+3. **AWS Security**
+   - Security group inbound/outbound rules
+   - IAM roles and permissions
+   - Database authentication
+
+4. **Problem-Solving Skills**
+   - Systematic troubleshooting approach
+   - Reading AWS console logs
+   - Identifying network issues
+   - Testing connectivity
 
 ---
 
-## 📁 Files in This Directory
+## 📁 Assignment Structure
 
-| File/Folder | Description |
-|-------------|-------------|
-| `C1_W4_Assignment.md` | Official assignment instructions from Coursera |
-| `SOLUTION_GUIDE.md` | **⭐ Complete step-by-step solution guide** |
-| `QUICK_COMMANDS.md` | **⚡ Quick reference for all commands** |
-| `terraform/` | Infrastructure as Code (Terraform modules) |
-| `scripts/` | Setup and utility scripts |
-| `sql/` | SQL scripts for database operations |
-| `data/` | Sample data files |
-| `images/` | Architecture diagrams and screenshots |
+### Part 1: Fixing Database Connectivity Issues
+- Connect EC2 instance to RDS database
+- Troubleshoot VPC configuration
+- Fix security group rules
+- Establish database connection
 
----
-
-## 🚀 Quick Start
-
-### Option 1: Follow the Solution Guide (Recommended)
-```bash
-# Open the comprehensive solution guide
-open SOLUTION_GUIDE.md
-```
-
-The solution guide includes:
-- ✅ All commands with explanations
-- ✅ Expected outputs
-- ✅ Troubleshooting tips
-- ✅ Verification steps
-- ✅ Common issues and solutions
-
-### Option 2: Use Quick Commands
-```bash
-# Open the quick reference
-open QUICK_COMMANDS.md
-```
-
-Perfect for when you just need the commands!
+### Part 2: Fixing Permission Issues
+- Resolve IAM permission errors
+- Configure proper access policies
+- Test database operations
 
 ---
 
-## 🏗️ Architecture
+## 🛠️ Technologies & Services
 
-This assignment implements:
+### AWS Services:
+- **EC2** - Virtual server instances
+- **RDS** - PostgreSQL database
+- **VPC** - Virtual network
+- **Security Groups** - Firewall rules
+- **IAM** - Access management
+- **Systems Manager** (optional)
 
-### Batch Pipeline
-```
-MySQL (RDS) → AWS Glue ETL → S3 Data Lake → Training Data
-```
-
-### Vector Database
-```
-PostgreSQL (RDS) + pgvector → Store Embeddings → Vector Search
-```
-
-### Streaming Pipeline
-```
-Kinesis Data Streams → Lambda (Model Inference) → Kinesis Firehose → S3 Recommendations
-```
+### Tools:
+- **psql** - PostgreSQL command-line client
+- **AWS CLI** - Command-line interface
+- **SQL** - Database queries
 
 ---
 
-## 🛠️ Technologies Used
+## 🚀 Getting Started
 
-- **AWS Services**:
-  - Amazon EC2 (Compute)
-  - Amazon RDS (MySQL & PostgreSQL)
-  - AWS Glue (ETL)
-  - AWS Lambda (Serverless)
-  - Amazon Kinesis (Streaming)
-  - Amazon S3 (Storage)
-  - CloudWatch (Monitoring)
+### Prerequisites:
+- AWS Console access (provided by Coursera)
+- Basic understanding of networking concepts
+- Familiarity with SQL
+- Understanding of cloud security principles
 
-- **Infrastructure**:
-  - Terraform (IaC)
-  - VPC & Security Groups
+### Steps Overview:
 
-- **Databases**:
-  - MySQL
-  - PostgreSQL with pgvector extension
+1. **Access AWS Console**
+   ```bash
+   cat ../.aws/aws_console_url
+   ```
 
----
+2. **Identify the Issue**
+   - Check RDS instance details
+   - Review EC2 instance configuration
+   - Examine VPC settings
+   - Inspect security groups
 
-## 📝 Assignment Steps
+3. **Fix Connectivity**
+   - Modify security group rules
+   - Update VPC configuration
+   - Test connection with psql
 
-### Part 1: Batch Pipeline (Steps 1.1 - 1.15)
-1. Explore the ratings table in MySQL
-2. Deploy AWS Glue ETL job with Terraform
-3. Transform data and store in S3
-
-### Part 2: Vector Database (Steps 2.1 - 2.12)
-1. Create PostgreSQL database with pgvector
-2. Load embeddings from S3
-3. Verify vector database setup
-
-### Part 3: Lambda Configuration (Steps 3.1 - 3.3)
-1. Configure Lambda environment variables
-2. Connect model inference to vector database
-
-### Part 4: Streaming Pipeline (Steps 4.1 - 4.4)
-1. Deploy Kinesis infrastructure
-2. Verify real-time data flow
-3. Monitor Lambda transformations
+4. **Verify Access**
+   - Run test SQL queries
+   - Confirm data operations
+   - Document the solution
 
 ---
 
-## ⏱️ Time Estimates
+## 📝 Key Concepts
 
-- **Part 1**: ~15 minutes (includes 2-3 min Glue job wait)
-- **Part 2**: ~20 minutes (includes 7 min DB creation wait)
-- **Part 3**: ~5 minutes
-- **Part 4**: ~15 minutes (includes 5-10 min streaming wait)
+### VPC (Virtual Private Cloud)
+- Private network in AWS
+- Controls network access to resources
+- Subnets, route tables, gateways
 
-**Total**: ~55 minutes
+### Security Groups
+- Virtual firewall for instances
+- Control inbound/outbound traffic
+- Rules based on protocols, ports, IP addresses
 
----
-
-## ✅ Success Criteria
-
-- [ ] Glue job completes successfully
-- [ ] Data appears in S3 datalake bucket
-- [ ] Vector database created with embeddings loaded
-- [ ] Lambda environment variables configured
-- [ ] Streaming data flows to recommendations bucket
-- [ ] CloudWatch logs show Lambda activity
+### RDS (Relational Database Service)
+- Managed database service
+- PostgreSQL instance in this lab
+- Endpoint and port configuration
 
 ---
 
-## 🐛 Common Issues
+## 🔍 Troubleshooting Checklist
 
-### Issue: Terraform apply fails
-**Solution**: Ensure you uncommented the correct lines and saved files
+When facing connectivity issues, check:
 
-### Issue: Database connection refused
-**Solution**: Check security groups allow your IP address
-
-### Issue: Glue job fails
-**Solution**: Check CloudWatch logs for detailed error messages
-
-### Issue: No streaming data
-**Solution**: Wait 5-10 minutes, Kinesis streams data every ~10 seconds
+- [ ] EC2 and RDS in same VPC?
+- [ ] Security group allows port 5432?
+- [ ] Inbound rules configured correctly?
+- [ ] Database endpoint correct?
+- [ ] Credentials valid?
+- [ ] psql client installed?
+- [ ] Network ACLs not blocking?
 
 ---
 
-## 📚 Additional Resources
+## 📊 Expected Outcomes
 
-- [AWS Glue Documentation](https://docs.aws.amazon.com/glue/)
+After completing this assignment:
+
+✅ Understand AWS networking fundamentals  
+✅ Know how to troubleshoot database connectivity  
+✅ Configure security groups properly  
+✅ Connect EC2 to RDS successfully  
+✅ Execute SQL operations on cloud databases  
+
+---
+
+## 📚 Resources
+
+### AWS Documentation:
+- [Amazon VPC User Guide](https://docs.aws.amazon.com/vpc/)
 - [Amazon RDS User Guide](https://docs.aws.amazon.com/rds/)
-- [Terraform AWS Provider](https://registry.terraform.io/providers/hashicorp/aws/latest/docs)
-- [pgvector Extension](https://github.com/pgvector/pgvector)
+- [Security Groups for EC2](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-security-groups.html)
+
+### PostgreSQL:
+- [psql Documentation](https://www.postgresql.org/docs/current/app-psql.html)
+- [PostgreSQL Tutorials](https://www.postgresql.org/docs/current/tutorial.html)
 
 ---
 
-## 🎓 What You'll Learn
+## 💡 Tips
 
-By completing this assignment, you'll gain hands-on experience with:
-- Building production-grade data pipelines
-- Managing AWS infrastructure with Terraform
-- Working with vector databases for ML applications
-- Implementing real-time streaming architectures
-- Troubleshooting cloud connectivity issues
-
----
-
-## 📊 Grading
-
-This assignment is auto-graded by Coursera. The grader verifies:
-- AWS resources are properly created
-- Data flows through the pipelines correctly
-- Configurations are set up as specified
-
-**Submit** your work via the Coursera platform when complete.
+1. **Read Error Messages Carefully** - They often tell you exactly what's wrong
+2. **Check Security Groups First** - Most common connectivity issue
+3. **Verify VPC Configuration** - EC2 and RDS must be able to communicate
+4. **Test Step by Step** - Isolate the problem systematically
+5. **Document Your Changes** - Note what you modified and why
 
 ---
 
-**Good luck! 🚀**
+## ⚠️ Common Issues
 
-For detailed instructions, see `SOLUTION_GUIDE.md`
+| Problem | Likely Cause | Solution |
+|---------|--------------|----------|
+| Connection timeout | Security group blocking | Add inbound rule for port 5432 |
+| Wrong VPC | EC2/RDS in different VPCs | Move to same VPC or configure peering |
+| Authentication failed | Wrong credentials | Verify username/password |
+| Permission denied | IAM policy issue | Update IAM role/policy |
+
+---
+
+## 🎓 Skills Gained
+
+- AWS networking troubleshooting
+- Security group configuration
+- Database connectivity setup
+- Cloud infrastructure debugging
+- PostgreSQL operations
+- Problem-solving methodology
+
+---
+
+## 📝 Notes
+
+- This assignment is **configuration-focused**, not code-focused
+- Changes are made in AWS Console (GUI)
+- Some AWS CLI commands may be used
+- SQL queries will be executed but not developed
+- Focus is on **understanding AWS networking**
+
+---
+
+## 🔄 Status
+
+**Current Status**: Ready to start  
+**Next Steps**: 
+1. Download files from Coursera
+2. Follow assignment instructions
+3. Document your troubleshooting process
+4. Complete both parts of the assignment
+
+---
+
+**Last Updated**: December 13, 2025  
+**Difficulty**: Intermediate  
+**Time Commitment**: 2-3 hours
