@@ -1,6 +1,7 @@
 # Week 1: Troubleshooting Database Connectivity on AWS
 
-**Status**: 🚧 **In Progress**  
+**Status**: 🚧 **Ready to Start**  
+**Assignment**: C2_W1 - Troubleshooting Database Connectivity on AWS  
 **Assignment Type**: AWS Networking & Database Troubleshooting  
 **Estimated Time**: 2-3 hours
 
