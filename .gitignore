@@ -106,3 +106,7 @@ __pycache__/
 *.pyc
 .venv/
 module3/week1/.venv/
+
+# Personal workflow files
+.cursorrules
+COURSERA_WORKFLOW.md
