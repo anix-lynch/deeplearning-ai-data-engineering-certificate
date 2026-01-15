@@ -101,3 +101,8 @@ lambda.zip
 src/env
 src/env
 module2/week3/src/env
+.venv/
+__pycache__/
+*.pyc
+.venv/
+module3/week1/.venv/

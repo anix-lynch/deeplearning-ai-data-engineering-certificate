@@ -125,7 +125,7 @@ Airport --Route--> Airport
 ## File Structure
 ```
 week1/
-├── C3_W1_Assignment.ipynb    # Main assignment notebook
+├── C3_W1_Assignment.ipynb    # Main assignment notebook (all exercises complete)
 ├── src/
 │   ├── env.template          # Credential template
 │   └── env                   # Actual credentials (gitignored)
@@ -134,12 +134,31 @@ week1/
 │   ├── AWSLogout.png
 │   ├── neo4j-cmd.png
 │   └── neo4j-cmd-run.png
+├── scripts/                  # Utility scripts
+│   └── fix_notebook.py       # One-time notebook fix script
 └── README.md                 # This file
 ```
 
 ## Running the Code
 
-### Setup
+### Setup in Coursera Environment
+```bash
+cd /home/coder/project
+
+# Download notebook
+curl -o C3_W1_Assignment.ipynb https://raw.githubusercontent.com/anix-lynch/deeplearning-ai-data-engineering-certificate/main/module3/week1/C3_W1_Assignment.ipynb
+
+# Download setup files
+mkdir -p src images scripts
+curl -o src/env.template https://raw.githubusercontent.com/anix-lynch/deeplearning-ai-data-engineering-certificate/main/module3/week1/src/env.template
+
+# Configure Neo4j connection
+# Get Neo4j DNS from AWS CloudFormation Outputs
+# Update src/env with Neo4jDNSConnection value (without port)
+# Use credentials: neo4j / adminneo4j
+```
+
+### Local Setup
 ```bash
 # Install dependencies
 pip install neo4j python-dotenv ipython
