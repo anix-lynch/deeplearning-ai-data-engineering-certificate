@@ -211,6 +211,7 @@ python3 -c "import great_expectations as gx; ctx = gx.get_context(); print('Expe
 - Data docs accessible via S3 static website hosting
 - Notebook cells execute successfully without errors
 - **Notebook contains actual execution outputs** (not just code) - ready for review/interview prep
+- **Note on "Output exceeds size limit"**: Some cells show this message for large JSON outputs (like checkpoint configs). This is normal Jupyter behavior - the data is still there, just truncated for display. Click "Open the full output" if needed.
 
 ## Understanding the Implementation
 
