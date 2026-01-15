@@ -8,6 +8,8 @@
 ## Overview
 Implemented a comprehensive data quality validation workflow using Great Expectations (GX) to validate a MySQL database containing taxi trip data. Configured S3-backed stores for expectations, validations, checkpoints, and data documentation.
 
+**Key Achievement**: All 6 exercises completed successfully, with actual execution outputs preserved in the notebook. The notebook demonstrates a complete GX workflow from setup to validation execution.
+
 ## Technologies Used
 - **Great Expectations (GX)**: Data quality validation framework
 - **Python**: Core programming language
@@ -208,6 +210,47 @@ python3 -c "import great_expectations as gx; ctx = gx.get_context(); print('Expe
 - GX configuration uses S3 backends (not local filesystem)
 - Data docs accessible via S3 static website hosting
 - Notebook cells execute successfully without errors
+- **Notebook contains actual execution outputs** (not just code) - ready for review/interview prep
+
+## Understanding the Implementation
+
+### What Was Built
+1. **Data Context**: Central GX configuration with S3 backends for persistence
+2. **Data Source**: MySQL connection to `taxi_trips` database
+3. **Data Asset**: Table asset for `trips` table
+4. **Batch Requests**: Split data by `vendor_id` column (3 batches: vendor_id 1, 2, 4)
+5. **Expectation Suite**: Collection of 3 data quality rules
+6. **Validator**: Component that executes expectations against batches
+7. **Checkpoint**: Automated workflow that runs validations and stores results
+
+### Great Expectations Concepts (Interview Prep)
+
+**Data Context**: The entry point for GX - manages configuration, stores, and provides API access. Think of it as the "brain" of your data quality system.
+
+**Data Source**: Connection to your data (SQL database, files, etc.). In this case, MySQL database.
+
+**Data Asset**: Specific dataset within a source (e.g., a table). Represents what you want to validate.
+
+**Batch Request**: Specification for retrieving data. Can split data into batches (e.g., by vendor_id) for parallel validation.
+
+**Expectation Suite**: Collection of data quality rules (expectations). Like unit tests for data.
+
+**Validator**: Executes expectations against data batches. Returns pass/fail results.
+
+**Checkpoint**: Automated workflow that:
+- Takes batch requests + expectation suite
+- Creates validator
+- Runs validations
+- Stores results
+- Updates data docs
+
+**Data Docs**: Human-readable HTML reports showing validation results, expectation suites, and data quality metrics.
+
+### Why S3 Backends?
+- **Accessibility**: Multiple team members can access from anywhere
+- **Scalability**: Handles growing metadata without local storage limits
+- **Durability**: AWS S3 provides 99.999999999% durability
+- **Separation**: Artifacts (expectations/validations) separate from docs (HTML reports)
 
 ## Next Steps
 
