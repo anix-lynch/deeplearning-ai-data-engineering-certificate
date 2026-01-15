@@ -85,7 +85,6 @@ def get_paginated_album_tracks(
             print(f"Requesting to: {request_url}")
             # Perform a GET request using the request_url and headers that you created in the previous steps.
             response = requests.get(url=request_url, headers=headers)
-            print(f"response {response}")
 
             if response.status_code == 401:  # Unauthorized
                 # Handle token expiration and update.
@@ -102,7 +101,7 @@ def get_paginated_album_tracks(
                     return []
 
             # Convert the response to json using the json() method.
-            response_json = response.json()()
+            response_json = response.json()
             # Extend the album_data list with the value from "items" in response_json.
             album_data.extend(response_json["items"])
             # Update request_url with the "next" value from response_json.
