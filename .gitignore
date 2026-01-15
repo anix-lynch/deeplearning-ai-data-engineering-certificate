@@ -110,3 +110,16 @@ module3/week1/.venv/
 # Personal workflow files
 .cursorrules
 COURSERA_WORKFLOW.md
+
+# Secrets and API keys
+*access_token*
+*ACCESS_TOKEN*
+*api_key*
+*API_KEY*
+*client_secret*
+*CLIENT_SECRET*
+*secret*
+*SECRET*
+# Spotify tokens pattern
+*BQD*
+*BQC*
