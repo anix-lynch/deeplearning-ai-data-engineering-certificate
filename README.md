@@ -23,13 +23,15 @@ This repository contains all assignments and projects completed for the **DeepLe
 
 ### Module 2: Source Systems, Data Ingestion, and Pipelines 🚧
 **Course**: Data Engineering Professional Certificate (Course 2)  
-**Status**: In Progress (25%)  
+**Status**: In Progress (75%)  
 **Started**: November 2025
 
-- 🚧 **Week 1**: Troubleshooting Database Connectivity on AWS
+- ✅ **Week 1**: Troubleshooting Database Connectivity on AWS
+- ✅ **Week 2**: Batch Data Processing from an API (Spotify API)
+- ✅ **Week 3**: Testing Data Quality with Great Expectations *(Completed Jan 2026)*
 - ✅ **Week 4**: Building an Advanced Data Pipeline With Data Quality Checks *(Completed Dec 2025)*
 
-**Key Technologies**: Apache Airflow, Great Expectations, EC2, RDS, S3, Security Groups, VPC, Pandas, Jinja2
+**Key Technologies**: Apache Airflow, Great Expectations, EC2, RDS, S3, Security Groups, VPC, Pandas, Jinja2, MySQL, Python APIs
 
 [📂 View Module 2 Details](./module2/)
 
@@ -47,15 +49,21 @@ deeplearning-ai-data-engineering-certificate/
 │
 ├── module2/                    # Course 2: Source Systems & Data Ingestion
 │   ├── week1/                 # Database Connectivity Troubleshooting
-│   │   ├── terraform/         # Infrastructure as Code
-│   │   ├── scripts/           # Setup scripts
-│   │   ├── sql/               # SQL scripts
-│   │   ├── data/              # Sample data
-│   │   ├── images/            # Assignment diagrams
-│   │   ├── C1_W4_Assignment.md    # Assignment instructions
-│   │   ├── SOLUTION_GUIDE.md      # Step-by-step solution
-│   │   └── QUICK_COMMANDS.md      # Command reference
+│   ├── week2/                 # Batch Data Processing from API
+│   ├── week3/                 # Data Quality with Great Expectations
+│   ├── week4/                 # Advanced Airflow ML Pipeline
 │   └── README.md              # Module 2 overview
+│
+├── module3/                    # Course 3: Data Transformation
+│   ├── week1/                 # Graph Databases & Vector Search (Neo4j)
+│   ├── week2/                 # (In Progress)
+│   ├── week3/                 # (Pending)
+│   └── week4/                 # (Pending)
+│
+├── module4/                    # Course 4: Data Serving
+│   ├── week1/                 # dbt & Star Schema
+│   ├── week2/                 # (In Progress)
+│   └── week3/                 # (In Progress)
 │
 └── README.md                   # This file
 ```
@@ -99,11 +107,14 @@ deeplearning-ai-data-engineering-certificate/
 | Module | Course Name | Weeks Completed | Status |
 |--------|-------------|-----------------|--------|
 | Module 1 | Data Engineering Foundations | 3/3 | ✅ 100% |
-| Module 2 | Source Systems & Data Ingestion | 1/4 (Week 4 done) | 🚧 25% |
-| Module 3 | Data Transformation | 0/4 | ⏳ Pending |
-| Module 4 | Data Serving | 0/4 | ⏳ Pending |
+| Module 2 | Source Systems & Data Ingestion | 3/4 | 🚧 75% |
+| Module 3 | Data Transformation | 1/4 | 🚧 25% |
+| Module 4 | Data Serving | 1/4 | 🚧 25% |
 
-**Note**: Completed Week 4 assignments (Advanced Airflow ML Pipeline) ahead of sequence.
+**Completed Weeks:**
+- Module 2: Week 1 (Database Connectivity), Week 2 (API Processing), Week 3 (Great Expectations), Week 4 (Airflow ML Pipeline)
+- Module 3: Week 1 (Neo4j Graph Databases)
+- Module 4: Week 1 (dbt & Star Schema)
 
 ---
 
@@ -117,11 +128,25 @@ deeplearning-ai-data-engineering-certificate/
 - ✅ Optimized data architectures for performance and security
 
 ### Module 2 (Source Systems & Data Ingestion)
+- ✅ Troubleshot database connectivity issues (RDS, Security Groups, VPC)
+- ✅ Built batch data processing pipeline from Spotify Web API
+- ✅ Implemented data quality validation with Great Expectations
+- ✅ Configured S3-backed GX stores for expectations, validations, and data docs
 - ✅ Built advanced Airflow ML pipeline with data quality checks
-- ✅ Implemented Great Expectations for data validation
 - ✅ Created conditional deployment logic with BranchPythonOperator
 - ✅ Developed dynamic DAG generation using Jinja2 templates
 - ✅ Deployed multi-vendor ML pipelines to AWS EC2
+
+### Module 3 (Data Transformation)
+- ✅ Learned Cypher query language for Neo4j graph databases
+- ✅ Performed CRUD operations on graph data (nodes, relationships)
+- ✅ Implemented advanced graph queries (multi-hop paths, aggregations)
+- ✅ Explored vector search capabilities in Neo4j
+
+### Module 4 (Data Serving)
+- ✅ Designed star schema data models
+- ✅ Implemented dbt (data build tool) for transformations
+- ✅ Created dimensional and fact tables
 
 ---
 
@@ -154,4 +179,4 @@ GitHub: [@anix-lynch](https://github.com/anix-lynch)
 
 ---
 
-**Last Updated**: November 28, 2025
+**Last Updated**: January 15, 2026
