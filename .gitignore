@@ -98,3 +98,5 @@ lambda.zip
 *.db
 *.sqlite
 *.sqlite3
+src/env
+src/env
