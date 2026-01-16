@@ -269,14 +269,22 @@ WITH total_payment_amounts_sum AS (
         fact_rental
     GROUP BY
         DATE_PART('month', payment_date)
+),
+monthly_with_lag AS (
+    SELECT
+        month,
+        amount,
+        LAG(amount, 1) OVER (ORDER BY month) AS previous_month_amount
+    FROM
+        total_payment_amounts_sum
 )
 SELECT
     month,
     amount,
-    LAG(amount, 1) OVER (ORDER BY month) AS previous_month_amount,
-    LAG(amount, 1) OVER (ORDER BY month) - amount AS difference
+    previous_month_amount,
+    previous_month_amount - amount AS difference
 FROM
-    total_payment_amounts_sum
+    monthly_with_lag
 ORDER BY
     month;""",
     
