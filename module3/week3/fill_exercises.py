@@ -49,9 +49,9 @@ films_average_by_category AS (
         films_per_category
 )
 SELECT
-    average_by_category,
-    FLOOR(average_by_category) AS floor_average,
-    CEIL(average_by_category) AS ceil_average
+    average_by_category AS average,
+    FLOOR(average_by_category) AS average_down,
+    CEIL(average_by_category) AS average_up
 FROM
     films_average_by_category;""",
     
@@ -85,13 +85,13 @@ categories_above_average AS (
         )
 )
 SELECT
-    dim_category.name AS category_name,
-    categories_above_average.film_count
+    dim_category.name AS category,
+    categories_above_average.film_count AS films
 FROM
     categories_above_average
     INNER JOIN dim_category ON categories_above_average.category_id = dim_category.category_id
 ORDER BY
-    category_name;""",
+    category;""",
     
     'ex04': """%%sql
 WITH max_amount_customer AS (
