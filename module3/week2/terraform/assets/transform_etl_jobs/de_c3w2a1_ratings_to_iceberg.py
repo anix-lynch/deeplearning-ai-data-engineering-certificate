@@ -106,8 +106,8 @@ logger.info(f"json_ratings has been read: {json_ratings.printSchema()}")
 # SQL Query to pull out all ratings with the most recent `ingest_ts` timestamp.
 SqlQuery0 = """
 select * 
-from None 
-where None = (select None(None) from None)
+from ratings 
+where ingest_ts = (select max(ingest_ts) from ratings)
 ;
 """
 ### END CODE HERE ###

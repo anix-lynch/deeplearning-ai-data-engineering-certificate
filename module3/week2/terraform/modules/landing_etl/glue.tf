@@ -2,9 +2,9 @@ resource "aws_glue_connection" "rds_connection" {
   name = "${var.project}-rds-connection"
 
   connection_properties = {
-    JDBC_CONNECTION_URL = "None"
-    USERNAME            = None.None
-    PASSWORD            = None.None
+    JDBC_CONNECTION_URL = "jdbc:mysql://${var.host}:${var.port}/${var.database}"
+    USERNAME            = var.username
+    PASSWORD            = var.password
   }
 
   physical_connection_requirements {

@@ -117,11 +117,11 @@ def add_metadata(source_pd: DataFrame,
     ### START CODE HERE ### (2 lines of code)
 
     # Replace `None` with the appropriate `source` metadata string, which will be the "classic_models_mysql".
-    source_pd['source'] = "None"
+    source_pd['source'] = "classic_models_mysql"
 
     # Add the current timestamp as a column named `ingest_ts` into the current schema `source_schema`. 
     # You can use the function `StructField()` passing the `TimestampType()` as an argument.
-    source_schema.add(None("None", TimestampType(), True))
+    source_schema.add(StructField("ingest_ts", TimestampType(), True))
     ### END CODE HERE ###
 
     source_schema.add(StructField("source", StringType(), True))
@@ -146,7 +146,7 @@ def enforce_schema(source_pd: DataFrame,
         ### START CODE HERE ### (10 lines of code)
 
         # Check if the field type is an integer type replacing `None` with the `IntegerType`.
-        if isinstance(field_type, None):
+        if isinstance(field_type, IntegerType):
             source_pd[field_name] = pd.to_numeric(source_pd[field_name], errors='coerce')
             source_pd[field_name] = source_pd[field_name].replace(np.nan, 0)
             source_pd[field_name] = source_pd[field_name].astype(np.int64)
@@ -154,19 +154,19 @@ def enforce_schema(source_pd: DataFrame,
 
             # Handle the DoubleType case similar to the IntegerType case above.
             # Use pd.to_numeric with errors='coerce'.
-            source_pd[field_name] = pd.None(None[None], None='None')
+            source_pd[field_name] = pd.to_numeric(source_pd[field_name], errors='coerce')
 
             # Replace np.nan with `0.0`.
-            source_pd[field_name] = None[None].None(None.None, 0.0)
+            source_pd[field_name] = source_pd[field_name].replace(np.nan, 0.0)
 
             # Convert the column to `np.float16` using `astype()` method.
-            source_pd[field_name] = None[None].None(None.None)
+            source_pd[field_name] = source_pd[field_name].astype(np.float16)
         
         # Check if the field type is an date type replacing `None` with the `DateType`.
-        elif isinstance(field_type, None):
+        elif isinstance(field_type, DateType):
 
             # Convert the column to datetime using `to_datetime` method.
-            source_pd[field_name] = pd.None(None[None])
+            source_pd[field_name] = pd.to_datetime(source_pd[field_name])
 
         ### END CODE HERE ###
     return source_pd

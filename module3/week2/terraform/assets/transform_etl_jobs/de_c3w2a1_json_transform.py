@@ -139,22 +139,22 @@ lastest_ingested_ratings = sparkSqlQuery(
 # `ratings` and `products` can be joined by the `productCode` column. The name is shared across the two tables.
 # `ratings` and `customers` can be joined by the `customerNumber` column, which is a column name shared across the two tables.
 SqlQuery1 = """
-select cast(c.None as INTEGER) as customerNumber
-, c.None
-, c.None
-, c.None
-, c.None
-, c.None
-, r.None
-, r.None
-, p.None
-, p.None
-, p.None
-, p.None
-, p.None
+select cast(c.customerNumber as INTEGER) as customerNumber
+, c.city
+, c.state
+, c.postalCode
+, c.country
+, c.creditLimit
+, r.productCode
+, r.productRating
+, p.productLine
+, p.productScale
+, p.quantityInStock
+, p.buyPrice
+, p.MSRP
 from ratings r 
-join products p on p.None = r.None 
-join customers c on c.None = r.None;
+join products p on p.productCode = r.productCode 
+join customers c on c.customerNumber = r.customerNumber;
 """
 ### END CODE HERE ###
 

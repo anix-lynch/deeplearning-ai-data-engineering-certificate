@@ -63,17 +63,17 @@ resource "aws_glue_job" "ratings_to_iceberg_job" {
   ### START CODE HERE ###
   default_arguments = {
     "--enable-job-insights" = "true"
-    "--job-language"        = "None"
+    "--job-language"        = "python"
     "--data_lake_bucket"    = var.data_lake_name
     "--database_name"       = var.curated_db_name
     "--table_name"          = var.curated_db_ratings_table
     "--lakehouse_path"      = "s3://${var.data_lake_name}/"
-    "None"                  = "None"
+    "--datalake-formats"    = "iceberg"
   }
 
-  timeout = None
+  timeout = 7
 
-  number_of_workers = None
+  number_of_workers = 2
   worker_type       = "G.1X"
   ### END CODE HERE ###
 }
