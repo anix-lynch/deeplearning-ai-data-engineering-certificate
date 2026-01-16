@@ -122,28 +122,16 @@ ORDER BY
     max_amount_customer.max_amount DESC, full_name ASC;""",
     
     'ex05': """%%sql
-WITH customer_category_totals AS (
-    SELECT
-        dim_customer.customer_id,
-        CONCAT(dim_customer.first_name, ' ', dim_customer.last_name) AS full_name,
-        dim_category.category_id,
-        dim_category.name AS category,
-        SUM(fact_rental.amount) AS amount
-    FROM
-        dim_customer
-        CROSS JOIN dim_category
-        LEFT JOIN fact_rental ON 
-            dim_customer.customer_id = fact_rental.customer_id 
-            AND dim_category.category_id = fact_rental.category_id
-    GROUP BY
-        dim_customer.customer_id, full_name, dim_category.category_id, category
-)
 SELECT
-    full_name,
-    category,
-    amount
+    CONCAT(dim_customer.first_name, ' ', dim_customer.last_name) AS full_name,
+    dim_category.name AS category,
+    SUM(fact_rental.amount) AS amount
 FROM
-    customer_category_totals
+    fact_rental
+    INNER JOIN dim_customer ON fact_rental.customer_id = dim_customer.customer_id
+    INNER JOIN dim_category ON fact_rental.category_id = dim_category.category_id
+GROUP BY
+    full_name, category
 ORDER BY
     full_name, category
 LIMIT 30;""",
@@ -179,9 +167,9 @@ LIMIT 10;""",
     
     'ex07': """%%sql
 SELECT
-    fact_rental.customer_id,
+    customer_id,
     CASE
-        WHEN (return_date - rental_date) <= (rental_duration || ' days')::INTERVAL THEN 'On time'
+        WHEN EXTRACT(DAY FROM (return_date - rental_date)) <= rental_duration THEN 'On time'
         ELSE 'Late'
     END AS delivery
 FROM
@@ -190,7 +178,7 @@ FROM
 WHERE
     payment_date BETWEEN '2007-04-30 15:00:00' AND '2007-04-30 16:00:00'
 ORDER BY
-    fact_rental.customer_id;""",
+    customer_id;""",
     
     'ex08': """%%sql
 SELECT
@@ -283,6 +271,7 @@ WITH total_payment_amounts_sum AS (
         fact_rental
     WHERE
         payment_date IS NOT NULL
+        AND customer_id = 1
     GROUP BY
         EXTRACT(MONTH FROM payment_date)
 )
@@ -305,6 +294,7 @@ WITH total_payment_amounts_sum AS (
         fact_rental
     WHERE
         payment_date IS NOT NULL
+        AND customer_id = 1
     GROUP BY
         EXTRACT(MONTH FROM payment_date)
 )
