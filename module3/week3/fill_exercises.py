@@ -122,17 +122,31 @@ ORDER BY
     max_amount_customer.max_amount DESC, full_name ASC;""",
     
     'ex05': """%%sql
+WITH customer_category_totals AS (
+    SELECT
+        dim_customer.customer_id,
+        CONCAT(dim_customer.first_name, ' ', dim_customer.last_name) AS full_name,
+        dim_category.category_id,
+        dim_category.name AS category,
+        SUM(fact_rental.amount) AS amount
+    FROM
+        dim_customer
+        CROSS JOIN dim_category
+        LEFT JOIN fact_rental ON 
+            dim_customer.customer_id = fact_rental.customer_id 
+            AND dim_category.category_id = fact_rental.category_id
+    GROUP BY
+        dim_customer.customer_id, full_name, dim_category.category_id, category
+)
 SELECT
-    CONCAT(dim_customer.first_name, ' ', dim_customer.last_name) AS full_name,
-    dim_category.name AS category_name,
-    fact_rental.amount
+    full_name,
+    category,
+    amount
 FROM
-    fact_rental
-    INNER JOIN dim_customer ON fact_rental.customer_id = dim_customer.customer_id
-    INNER JOIN dim_category ON fact_rental.category_id = dim_category.category_id
+    customer_category_totals
 ORDER BY
-    full_name, category_name, amount
-LIMIT 100;""",
+    full_name, category
+LIMIT 30;""",
     
     'ex06': """%%sql
 SELECT
@@ -165,9 +179,9 @@ LIMIT 10;""",
     
     'ex07': """%%sql
 SELECT
-    customer_id,
+    fact_rental.customer_id,
     CASE
-        WHEN DATE_PART('day', return_date - rental_date) <= rental_duration THEN 'On time'
+        WHEN (return_date - rental_date) <= (rental_duration || ' days')::INTERVAL THEN 'On time'
         ELSE 'Late'
     END AS delivery
 FROM
@@ -176,7 +190,7 @@ FROM
 WHERE
     payment_date BETWEEN '2007-04-30 15:00:00' AND '2007-04-30 16:00:00'
 ORDER BY
-    customer_id;""",
+    fact_rental.customer_id;""",
     
     'ex08': """%%sql
 SELECT
@@ -184,7 +198,7 @@ SELECT
 FROM
     dim_staff
 ORDER BY
-    first_name, last_name;""",
+    staff_id;""",
     
     'ex09': """%%sql
 WITH movies_amount_rating AS (
@@ -263,40 +277,36 @@ ORDER BY
     'ex11': """%%sql
 WITH total_payment_amounts_sum AS (
     SELECT
-        DATE_PART('month', payment_date) AS month,
+        EXTRACT(MONTH FROM payment_date) AS month,
         SUM(amount) AS amount
     FROM
         fact_rental
+    WHERE
+        payment_date IS NOT NULL
     GROUP BY
-        DATE_PART('month', payment_date)
-),
-monthly_with_lag AS (
-    SELECT
-        month,
-        amount,
-        LAG(amount, 1) OVER (ORDER BY month) AS previous_month_amount
-    FROM
-        total_payment_amounts_sum
+        EXTRACT(MONTH FROM payment_date)
 )
 SELECT
     month,
     amount,
-    previous_month_amount,
-    previous_month_amount - amount AS difference
+    LAG(amount, 1) OVER (ORDER BY month) AS previous_month_amount,
+    LAG(amount, 1) OVER (ORDER BY month) - amount AS difference
 FROM
-    monthly_with_lag
+    total_payment_amounts_sum
 ORDER BY
     month;""",
     
     'ex12': """%%sql
 WITH total_payment_amounts_sum AS (
     SELECT
-        DATE_PART('month', payment_date) AS month,
+        EXTRACT(MONTH FROM payment_date) AS month,
         SUM(amount) AS amount
     FROM
         fact_rental
+    WHERE
+        payment_date IS NOT NULL
     GROUP BY
-        DATE_PART('month', payment_date)
+        EXTRACT(MONTH FROM payment_date)
 )
 SELECT
     month,
