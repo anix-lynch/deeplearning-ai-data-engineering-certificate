@@ -293,7 +293,8 @@ WITH total_payment_amounts_sum AS (
 SELECT
     month,
     amount,
-    LEAD(amount, 1) OVER (ORDER BY month) AS next_month_amount
+    LEAD(amount, 1) OVER (ORDER BY month) AS next_month_amount,
+    LEAD(amount, 1) OVER (ORDER BY month) - amount AS difference
 FROM
     total_payment_amounts_sum
 ORDER BY
