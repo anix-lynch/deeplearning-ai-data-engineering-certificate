@@ -131,7 +131,8 @@ FROM
     INNER JOIN dim_customer ON fact_rental.customer_id = dim_customer.customer_id
     INNER JOIN dim_category ON fact_rental.category_id = dim_category.category_id
 ORDER BY
-    full_name, category_name, amount;""",
+    full_name, category_name, amount
+LIMIT 100;""",
     
     'ex06': """%%sql
 SELECT
