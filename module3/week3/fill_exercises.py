@@ -273,7 +273,8 @@ WITH total_payment_amounts_sum AS (
 SELECT
     month,
     amount,
-    LAG(amount, 1) OVER (ORDER BY month) AS previous_month_amount
+    LAG(amount, 1) OVER (ORDER BY month) AS previous_month_amount,
+    LAG(amount, 1) OVER (ORDER BY month) - amount AS difference
 FROM
     total_payment_amounts_sum
 ORDER BY
