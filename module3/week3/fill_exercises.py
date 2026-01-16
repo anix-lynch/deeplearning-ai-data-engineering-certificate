@@ -184,7 +184,7 @@ SELECT
 FROM
     dim_staff
 ORDER BY
-    initials;""",
+    first_name, last_name;""",
     
     'ex09': """%%sql
 WITH movies_amount_rating AS (
