@@ -180,7 +180,7 @@ ORDER BY
     
     'ex08': """%%sql
 SELECT
-    CONCAT(SUBSTRING(first_name, 1, 1), '.', SUBSTRING(last_name, 1, 1), '.') AS initials
+    CONCAT(SUBSTRING(first_name, 1, 1), SUBSTRING(last_name, 1, 1)) AS initials
 FROM
     dim_staff
 ORDER BY
