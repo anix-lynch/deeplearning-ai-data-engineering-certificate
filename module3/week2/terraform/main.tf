@@ -16,21 +16,21 @@ module "landing_etl" {
   glue_role_name        = var.glue_role_name
 }
 
-# module "transform_etl" {
-#   source = "./modules/transform_etl"
+module "transform_etl" {
+  source = "./modules/transform_etl"
 
-#   project                  = var.project
-#   region                   = var.region
-#   public_subnet_a_id       = var.public_subnet_a_id
-#   glue_role_arn            = module.landing_etl.glue_role_arn
-#   data_lake_name           = var.data_lake_name
-#   curated_db_name          = var.curated_db_name
-#   curated_db_ratings_table = var.curated_db_ratings_table
-#   curated_db_ml_table      = var.curated_db_ml_table
-#   scripts_bucket_name      = var.scripts_bucket_name
+  project                  = var.project
+  region                   = var.region
+  public_subnet_a_id       = var.public_subnet_a_id
+  glue_role_arn            = module.landing_etl.glue_role_arn
+  data_lake_name           = var.data_lake_name
+  curated_db_name          = var.curated_db_name
+  curated_db_ratings_table = var.curated_db_ratings_table
+  curated_db_ml_table      = var.curated_db_ml_table
+  scripts_bucket_name      = var.scripts_bucket_name
 
-#   depends_on = [module.landing_etl]
-# }
+  depends_on = [module.landing_etl]
+}
 
 # module "alter_table" {
 #   source = "./modules/alter_table"
