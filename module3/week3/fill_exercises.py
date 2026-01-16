@@ -233,7 +233,7 @@ actor_film_count AS (
         actor_id,
         first_name,
         last_name,
-        COUNT(*) AS films
+        COUNT(DISTINCT film_id) AS films
     FROM
         actor_film
     GROUP BY
