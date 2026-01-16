@@ -169,7 +169,7 @@ SELECT
     CASE
         WHEN DATE_PART('day', return_date - rental_date) <= rental_duration THEN 'On time'
         ELSE 'Late'
-    END AS return_status
+    END AS delivery
 FROM
     fact_rental
     INNER JOIN dim_film ON fact_rental.film_id = dim_film.film_id
