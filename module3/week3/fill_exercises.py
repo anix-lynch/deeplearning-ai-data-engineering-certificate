@@ -137,21 +137,15 @@ LIMIT 100;""",
     'ex06': """%%sql
 SELECT
     full_name,
-    COALESCE(SUM(CASE WHEN category_name = 'Action' THEN amount END), 0) AS Action,
-    COALESCE(SUM(CASE WHEN category_name = 'Animation' THEN amount END), 0) AS Animation,
-    COALESCE(SUM(CASE WHEN category_name = 'Children' THEN amount END), 0) AS Children,
-    COALESCE(SUM(CASE WHEN category_name = 'Classics' THEN amount END), 0) AS Classics,
-    COALESCE(SUM(CASE WHEN category_name = 'Comedy' THEN amount END), 0) AS Comedy,
-    COALESCE(SUM(CASE WHEN category_name = 'Documentary' THEN amount END), 0) AS Documentary,
-    COALESCE(SUM(CASE WHEN category_name = 'Drama' THEN amount END), 0) AS Drama,
     COALESCE(SUM(CASE WHEN category_name = 'Family' THEN amount END), 0) AS Family,
-    COALESCE(SUM(CASE WHEN category_name = 'Foreign' THEN amount END), 0) AS Foreign,
     COALESCE(SUM(CASE WHEN category_name = 'Games' THEN amount END), 0) AS Games,
-    COALESCE(SUM(CASE WHEN category_name = 'Horror' THEN amount END), 0) AS Horror,
-    COALESCE(SUM(CASE WHEN category_name = 'Music' THEN amount END), 0) AS Music,
-    COALESCE(SUM(CASE WHEN category_name = 'New' THEN amount END), 0) AS New,
-    COALESCE(SUM(CASE WHEN category_name = 'Sci-Fi' THEN amount END), 0) AS "Sci-Fi",
+    COALESCE(SUM(CASE WHEN category_name = 'Animation' THEN amount END), 0) AS Animation,
+    COALESCE(SUM(CASE WHEN category_name = 'Classics' THEN amount END), 0) AS Classics,
+    COALESCE(SUM(CASE WHEN category_name = 'Documentary' THEN amount END), 0) AS Documentary,
     COALESCE(SUM(CASE WHEN category_name = 'Sports' THEN amount END), 0) AS Sports,
+    COALESCE(SUM(CASE WHEN category_name = 'New' THEN amount END), 0) AS New,
+    COALESCE(SUM(CASE WHEN category_name = 'Children' THEN amount END), 0) AS Children,
+    COALESCE(SUM(CASE WHEN category_name = 'Music' THEN amount END), 0) AS Music,
     COALESCE(SUM(CASE WHEN category_name = 'Travel' THEN amount END), 0) AS Travel
 FROM (
     SELECT
@@ -166,7 +160,8 @@ FROM (
 GROUP BY
     full_name
 ORDER BY
-    full_name;""",
+    full_name
+LIMIT 10;""",
     
     'ex07': """%%sql
 SELECT
