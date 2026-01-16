@@ -169,7 +169,7 @@ LIMIT 10;""",
 SELECT
     customer_id,
     CASE
-        WHEN EXTRACT(DAY FROM (return_date - rental_date)) <= rental_duration THEN 'On time'
+        WHEN (EXTRACT(EPOCH FROM (return_date - rental_date)) / 86400) <= rental_duration THEN 'On time'
         ELSE 'Late'
     END AS delivery
 FROM
@@ -271,7 +271,7 @@ WITH total_payment_amounts_sum AS (
         fact_rental
     WHERE
         payment_date IS NOT NULL
-        AND customer_id = 1
+        AND customer_id = 388
     GROUP BY
         EXTRACT(MONTH FROM payment_date)
 )
@@ -294,7 +294,7 @@ WITH total_payment_amounts_sum AS (
         fact_rental
     WHERE
         payment_date IS NOT NULL
-        AND customer_id = 1
+        AND customer_id = 388
     GROUP BY
         EXTRACT(MONTH FROM payment_date)
 )
